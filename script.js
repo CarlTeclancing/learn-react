@@ -134,11 +134,23 @@ console.log(getIndexOfPerson)
 //async and await and understanding promise with api fetch 
 
 let listOfProducts = document.querySelector('.list-of-products')
+
+function renderProducts(products){
+    products.forEach(product => {
+        let productItem = document.createElement('li')
+        productItem.innerHTML = `
+        <h3>${product.name}</h3>
+        <p>${product.price}</p>
+        `
+        listOfProducts.appendChild(productItem)
+    });
+}
 async function getProducts(){
     try{
-        const response = await fetch('https://fakestoreapi.com/products')
-        const products = await response.json()
-        console.log(products)
+        const response = await fetch('https://dummyjson.com/products')
+        const results = await response.json()
+        console.log(results)
+        if(results?.products?.length > 0) renderProducts(results.products)
     }
     catch(err){
         console.log(err)
