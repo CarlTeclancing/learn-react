@@ -92,7 +92,7 @@ const personArray=[
 let getAllName = personArray.map((person)=>{
     return `${person.name} ${person.age} ${person.country}`
 })
-console.log(getAllName)
+//console.log(getAllName)
 
 //filter array functions
 
@@ -100,3 +100,48 @@ let getPersonFromCameroon = personArray.find((person)=>{
     return person.country === "cameroon"
 })
 console.log(getPersonFromCameroon)
+
+getAllPersonsFromCameroon = personArray.filter((person)=>{
+    return person.country === "cameroon"
+})
+
+console.log(getAllPersonsFromCameroon)
+
+let checkSomeArrayMEthod = personArray.some((person)=>{
+    return person.age> 40
+})
+
+console.log(checkSomeArrayMEthod)
+
+
+let checkEveryArrayMethod = personArray.every((person)=>{
+    return person.age > 10
+})
+
+console.log(checkEveryArrayMethod)
+
+
+const fruitsArray = ["apple", "banana", "mango", "orange"]
+
+console.log(fruitsArray.includes("apple"), fruitsArray.indexOf("mango"))
+
+let getIndexOfPerson = personArray.findIndex((person)=>{
+    return person.country === "USA"
+})
+console.log(getIndexOfPerson)
+
+
+//async and await and understanding promise with api fetch 
+
+let listOfProducts = document.querySelector('.list-of-products')
+async function getProducts(){
+    try{
+        const response = await fetch('https://fakestoreapi.com/products')
+        const products = await response.json()
+        console.log(products)
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+listOfProducts.innerHTML = getProducts()
